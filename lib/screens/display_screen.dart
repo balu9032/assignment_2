@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 final UserController userController = Get.find();
+var data = Get.arguments;
 
 class DisplayScreen extends StatelessWidget {
   DisplayScreen({super.key});
@@ -22,7 +23,7 @@ class DisplayScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Text('Name: ${userController.name.toString()}'),
+                Text('Name: ${userController.name.value}'),
                 const SizedBox(
                   height: 20,
                 ),
@@ -42,7 +43,7 @@ class DisplayScreen extends StatelessWidget {
                 ElevatedButton(
                   child: const Text('Edit Data'),
                   onPressed: () {
-                    Get.offAll(const HomeScreen());
+                    Get.offAll(() => const HomeScreen());
                   },
                 ),
                 const SizedBox(
@@ -52,7 +53,7 @@ class DisplayScreen extends StatelessWidget {
                   child: const Text('Ok, Go Back'),
                   onPressed: () {
                     userController.deleteData();
-                    Get.offAll(const HomeScreen());
+                    Get.offAll(() => const HomeScreen());
                   },
                 ),
               ],
